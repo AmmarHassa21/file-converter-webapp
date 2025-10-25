@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All-in-One File Converter</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>⚡ Universal File Converter</h1>
+    <form action="/convert" method="POST" enctype="multipart/form-data">
+      <input type="file" name="file" required>
+      <select name="conversion" required>
+        <option value="pdf_to_word">PDF → Word</option>
+        <option value="word_to_pdf">Word → PDF</option>
+        <option value="image_to_pdf">Image → PDF</option>
+        <option value="pdf_to_image">PDF → Image</option>
+        <option value="text_to_pdf">Text → PDF</option>
+        <option value="excel_to_csv">Excel → CSV</option>
+        <option value="csv_to_excel">CSV → Excel</option>
+      </select>
+      <button type="submit">Convert Now</button>
+    </form>
+  </div>
+</body>
+</html>
