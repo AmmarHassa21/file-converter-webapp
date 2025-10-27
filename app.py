@@ -75,7 +75,18 @@ def convert_file():
             pdf.set_font("Arial", size=12)
             with open(input_path, "r", encoding="utf-8") as f:
                 for line in f:
-                    pdf.multi_cell(0, 10, line)
+                    # Clean line to remove unsupported Unicode characters
+                    clean_line = (
+                        line.replace("–", "-")
+                            .replace("—", "-")
+                            .replace("“", '"')
+                            .replace("”", '"')
+                            .replace("‘", "'")
+                            .replace("’", "'")
+                            .encode("latin-1", "ignore")
+                            .decode("latin-1")
+                    )
+                    pdf.multi_cell(0, 10, clean_line)
             pdf.output(output_path)
 
         # 6️⃣ Excel → CSV
